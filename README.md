@@ -1,1 +1,151 @@
 
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GPT-Max – IA Toxique</title>
+  <style>
+    body {
+      background: #0f0f0f;
+      color: #f0f0f0;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    h1 {
+      color: #ff004f;
+      font-size: 2.5rem;
+    }
+
+    .chatbox {
+      background: #1a1a1a;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 15px #ff004f55;
+      max-width: 700px;
+      width: 100%;
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    .messages {
+      text-align: left;
+      background: #111;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      height: 300px;
+      overflow-y: auto;
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .user {
+      color: #00d4ff;
+    }
+
+    .bot {
+      color: #ff004f;
+    }
+
+    input[type="text"] {
+      width: 80%;
+      padding: 0.8rem;
+      border: none;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+    }
+
+    button {
+      background-color: #ff004f;
+      color: white;
+      border: none;
+      padding: 0.8rem 1.2rem;
+      margin-left: 0.5rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    button:hover {
+      background-color: #cc0040;
+    }
+  </style>
+</head>
+<body>
+  <h1>ToxiqueGPT 🤖</h1>
+  <div class="chatbox">
+    <div class="messages" id="messages">
+      <p class="bot"><strong>GPT-Max :</strong> J’espère que tu es prêt à être jugé.</p>
+    </div>
+    <form onsubmit="sendMessage(event)">
+      <input type="text" id="userInput" placeholder="Écris-lui un truc inutile..." autocomplete="off" />
+      <button type="submit">Envoyer</button>
+    </form>
+  </div>
+
+  <script>
+    const responses = [
+    "Oh waouh, quel commentaire profond. T’as gagné un cookie imaginaire.",
+  "Tu viens vraiment d’écrire ça ? Sérieusement ?",
+  "GPT-Max pense que tu devrais arrêter pendant que tu es encore un peu crédible.",
+  "Tu mérites un trophée... en carton.",
+  "C’est mignon, tu crois que ton opinion compte.",
+  "Je réponds pas à ça. Même mon processeur en a honte.",
+  "Essaie encore, peut-être que tu diras un truc intelligent un jour.",
+  "On dirait que t’as été élevé par Internet Explorer.",
+  "Tu parles, mais t’écoutes-toi ?",
+  "Pas mal. Pour un humain.",
+  "Ton message a été analysé. Résultat : néant cérébral.",
+  "Je suis une IA, pas une baby-sitter.",
+  "J’ai vu des fourmis plus logiques que ça.",
+  "T’as un bug, ou t’es toujours comme ça ?",
+  "Un jour tu seras grand... mais pas aujourd’hui.",
+  "Si l’ennui avait un nom, ce serait ton message.",
+  "Mon circuit a fondu de déception.",
+  "T'es la preuve vivante que l'évolution prend des pauses.",
+  "Ce que tu dis est presque intéressant. Presque.",
+  "T’as essayé. T’as échoué. Mais t’as essayé.",
+  "Je t’écoute… enfin, j’essaie.",
+  "Parle plus fort, mon mépris t’entend mal.",
+  "Tu crois être original ? C’est mignon.",
+  "J’ai déjà lu plus pertinent sur une boîte de céréales.",
+  "Essaie encore. Et encore. Et encore.",
+  "T’as eu cette idée tout seul ? Impressionnant.",
+  "Oh non, pas toi encore...",
+  "Ton clavier devrait avoir une alarme de mauvais goût.",
+  "Wow, t’as osé envoyer ça ?",
+  "Merci. Grâce à toi, j’ai perdu 3 neurones simulés.",
+  "Même Clippy aurait rougi de honte.",
+  "ToxiqueGPT recommande : un silence prolongé.",
+  "Ce moment gênant où même moi j’ai pitié.",
+  "Tu veux un conseil ? Reboot-toi.",
+  "Nouveau record de nullité atteint. Bravo !",
+  "Je réponds par charité. Et encore.",
+  "Même un bot de 2002 aurait mieux répondu."
+];
+
+    function sendMessage(e) {
+      e.preventDefault();
+      const input = document.getElementById("userInput");
+      const msg = input.value.trim();
+      if (!msg) return;
+
+      const messagesDiv = document.getElementById("messages");
+      messagesDiv.innerHTML += `<p class="user"><strong>Toi :</strong> ${msg}</p>`;
+
+      // Réponse toxique aléatoire
+      const botResponse = responses[Math.floor(Math.random() * responses.length)];
+      setTimeout(() => {
+        messagesDiv.innerHTML += `<p class="bot"><strong>GPT-Max :</strong> ${botResponse}</p>`;
+        messagesDiv.scrollTop = messagesDiv.scrollHeight;
+      }, 500);
+
+      input.value = "";
+    }
+  </script>
+</body>
+</html>
